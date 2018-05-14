@@ -1,16 +1,23 @@
-# Numerical methods
+# LU分解を用いた連立方程式の求解
 
-## About
+## Usage
 
-- 授業「数値計算」で製作したプログラムを残しておくためのもの。
-- 教科書は[これ](http://www.morikita.co.jp/books/book/2865)
-- 各ブランチ毎に実装した手法を分けて保存する
+```your_main.c
+// 扱いたい連立方程式の未知定数の個数+1として定義する
+#define N 8
 
-## Environment
+// 各ヘッダーファイルをinclude
+#include "util_lu.h"
+#include "lower_mat_equation_solver.h"
+#include "upper_mat_equation_solver.h"
 
-- macOS High Sierra
-- gcc
+int main(void) {
+  // your code here...
+}
+```
 
-## Methods
+- 具体例は`main_sample.c`を参照
 
-- LU分解を用いた連立方程式の求解([solve_multiple_eq_with_LU](https://github.com/assly/Numerical_methods/tree/solve_multiple_eq_with_LU))
+## Attention
+
+- コメントの英語はガバガバだと思うのでノリで読んでください
