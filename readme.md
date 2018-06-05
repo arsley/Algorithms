@@ -1,16 +1,22 @@
-# Numerical methods
+# Dijkstra(ダイクストラ法)
 
-## About
+- !!!間違っている可能性が大いにあります!!!
 
-- 授業「数値計算」で製作したプログラムを残しておくためのもの。
-- 教科書は[これ](http://www.morikita.co.jp/books/book/2865)
-- 各ブランチ毎に実装した手法を分けて保存する
+## Usage?
 
-## Environment
+問題に応じて`Dijkstra#make_input`の部分を変更してください。
+この入力形式は[こちらのサイトの問題](http://nw.tsuda.ac.jp/lec/dijkstra/)に準じています。
 
-- macOS High Sierra
-- gcc
+気が向いたら詳しく解説します。
 
-## Methods
+## Specific
 
-- LU分解を用いた連立方程式の求解([solve_multiple_eq_with_LU](https://github.com/assly/Numerical_methods/tree/solve_multiple_eq_with_LU))
+- ruby 2.5.1
+- [PQueue](https://github.com/rubyworks/pqueue)
+
+## References
+
+- [ダイクストラ法](http://nw.tsuda.ac.jp/lec/dijkstra/)
+- [ダイクストラ法(最短経路問題)](http://www.deqnotes.net/acmicpc/dijkstra/)
+- [Rubyで最短経路探索をしよう](http://melborne.github.io/2010/01/21/Ruby/)
+- [優先度付き待ち行列](http://ufcpp.net/study/algorithm/col_heap.html)
