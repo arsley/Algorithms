@@ -1,0 +1,6 @@
+# beginning with 'temp' file/directory will be ignored
+temp*
+
+# text file is testcase
+*.txt
+
