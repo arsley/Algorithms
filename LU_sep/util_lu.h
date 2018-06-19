@@ -13,9 +13,9 @@
  */
 
 // includes base header file
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
+// #include <math.h>
+// #include <stdlib.h>
+// #include <stdio.h>
 
 // prototype declaration
 void input_make(double A[][N], int *n);
@@ -83,7 +83,7 @@ void set_constants(double A[][N], double *constants, int n) {
  */
 void output_matrix(double M[][N], int n) {
   for(int i = 1; i <= n; i++) {
-    for(int j = 1; j <= n+1; j++) {
+    for(int j = 1; j <= n; j++) {
       printf("%10.6lf ", M[i][j]);
     }
     printf("\n");
@@ -123,7 +123,7 @@ void create_LU_matrix(double A[][N], double L[][N], double U[][N], int n) {
       exit(-1);
     }
 
-    for(j = i; j <= n + 1; j++) {
+    for(j = i; j <= n; j++) {
       // Lower matrix is piece of A-matrix
       L[j][i] = A[j][i];
       // make diagonal element as 1
@@ -132,9 +132,9 @@ void create_LU_matrix(double A[][N], double L[][N], double U[][N], int n) {
 
     for(k = i + 1; k <= n; k++) {
       q = A[k][i];
-      for(j = i; j <= n + 1; j++) {
+      for(j = i; j <= n; j++) {
         // basic deformation (base low is i)
-        A[k][j] = A[k][j] - A[i][j] * q;
+        A[k][j] -= A[i][j] * q;
       }
     }
 
