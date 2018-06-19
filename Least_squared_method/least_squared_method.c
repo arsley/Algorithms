@@ -3,7 +3,7 @@
 #define DEF 11
 #define N 4
 
-// #include "util_main.h"
+#include "util_main.h"
 
 double base_func(int calling_func, double x) {
   switch (calling_func) {
@@ -31,9 +31,11 @@ char *func_to_s(int calling_func, double c) {
 
 int main(void) {
   int f, g, n, i, j, l;
-  double xx, yy, p, q, h, s, tAA[4][4], Ans[4],
-         x[DEF], y[DEF], x2[DEF], x3[DEF], A[DEF][4], tA[4][DEF];
+  double xx, yy, p, q, h, s, tAA[4][4], Ans[4], Consts[4],
+         x[DEF], y[DEF], A[DEF][4], tA[4][DEF];
   char z, zz;
+
+  // FILE *fp;
 
   // begin input
   while(1) {
@@ -84,20 +86,29 @@ int main(void) {
   // end calc tAA
 
   // solve multiple equation with Gauss
-  for (i = 1; i <= 2; i++) {
-    p = tAA[i][i];
-    for (j = i; j <= 3; j++) { tAA[i][j] /= p; }
-    for (l = 1; l <= 2; l++) {
-      if (l != i) {
-        q = tAA[l][i];
-        for (j = i;j <= 3; j++) { tAA[l][j] -= q * tAA[i][j]; }
-      }
-    }
-  }
+  // for (i = 1; i <= 2; i++) {
+  //   p = tAA[i][i];
+  //   for (j = i; j <= 3; j++) { tAA[i][j] /= p; }
+  //   for (l = 1; l <= 2; l++) {
+  //     if (l != i) {
+  //       q = tAA[l][i];
+  //       for (j = i;j <= 3; j++) { tAA[l][j] -= q * tAA[i][j]; }
+  //     }
+  //   }
+  // }
   // end solving
 
   // substitute to Ans and print calculation
-  for (i = 1; i <= 2; i++) { Ans[i] = tAA[i][3]; }
+  // for (i = 1; i <= 2; i++) { Ans[i] = tAA[i][3]; }
+  // end substitute
+
+  // solve m-eq with LU
+  Consts[1] = tAA[1][3];
+  Consts[2] = tAA[2][3];
+  from_create_to_solve_eq(tAA, Consts, Ans, 2);
+  // end solving
+
+  // begin output
   printf("\nCalculated function is\n");
 
   // separete printf because return value 'buf' is assosiated through func_to_s
@@ -108,11 +119,17 @@ int main(void) {
   printf("\nOutput answers below:\n");
   h = (x[n] - x[1]) / 50.0;
   xx = x[1];
+
+  // fp = fopen("result.txt", "w");
+
   for (i = 0; i <= 50; i++) {
     yy = Ans[1] * base_func(f, xx) + Ans[2] * base_func(g, xx);
     printf("%10.6lf  %10.6lf\n", xx, yy);
+    // fprintf(fp, "%10.6lf  %10.6lf\n", xx, yy);
     xx += h;
   }
+
+  fclose(fp);
   // end output
 
   return 0;
